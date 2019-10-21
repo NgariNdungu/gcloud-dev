@@ -35,7 +35,7 @@ services:
       - PROFILE=my-profile
       - ZONE=us-west1-a
       - PROJECT=project-name
-      - CLUSTER_NAME=cluster-name
+      - CLUSTER=cluster-name
       - CLUSTER_NODES=1
       - NODE_TYPE=n1-standard-1 # g1-small n1-standard-1, n1-highmem-2
       - NODE_IMAGE=cos #cos, cosd, ubuntu
@@ -79,15 +79,15 @@ Log into the contaier bash to start working on your project
 ```bash
 docker-compose run <your-service> bash
 # or
-docker-compose up <your-service>
+docker-compose up -d <your-service>
 docker ps
 docker exec -it docker-container-id bash;
 ```
 
 # Cheat Sheet
 
-### kubectl bash aliaes
-The docker container is configured witha number of aliases to reduce typing. 
+### kubectl bash aliases
+The docker container is configured with a number of aliases to reduce typing. 
 ```bash
 k     # kubectl $@
 ka    # kubectl apply $@
@@ -141,11 +141,12 @@ gcloud container clusters delete $CLUSTER
 ### Create Static IP
 
 global ip
+```bash
 gcloud compute addresses create <ip-name> --global
 gcloud compute addresses describe <ip-name> --global
 
 gcloud compute addresses delete <ip-name>
-
+```
 Cheatsheet [here](https://gist.github.com/pydevops/cffbd3c694d599c6ca18342d3625af97)
 
 ## Calico CNI
