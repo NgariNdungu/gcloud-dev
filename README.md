@@ -35,7 +35,7 @@ services:
       - PROFILE=my-profile
       - ZONE=us-west1-a
       - PROJECT=project-name
-      - CLUSTER=cluster-name
+      - CLUSTER_NAME=cluster-name
       - CLUSTER_NODES=1
       - NODE_TYPE=n1-standard-1 # g1-small n1-standard-1, n1-highmem-2
       - NODE_IMAGE=cos #cos, cosd, ubuntu
@@ -113,7 +113,7 @@ kbash # kubectl exec -it $@ -- /bin/bash
 
 ```bash
 gcloud container clusters list
-gcloud container clusters create $CLUSTER \
+gcloud container clusters create $CLUSTER_NAME \
 		--num-nodes $CLUSTER_NODES \
 		--machine-type $NODE_TYPE
 ```
@@ -129,13 +129,13 @@ gcloud projects list
 ### Authorize Kubectl
 
 ```bash
-gcloud container clusters get-credentials $CLUSTER --zone $ZONE
+gcloud container clusters get-credentials $CLUSTER_NAME --zone $ZONE
 ```
 
 ### Delete cluster
 
 ```bash
-gcloud container clusters delete $CLUSTER
+gcloud container clusters delete $CLUSTER_NAME
 ```
 
 ### Create Static IP
